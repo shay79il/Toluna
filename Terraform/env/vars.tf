@@ -331,14 +331,70 @@ variable "topics" {
 }
 
 variable "protocol" {
-  type = string
-  default = "email"
+  type        = string
+  default     = "email"
   description = "Subscription protocol"
 }
 
 
 variable "endpoint" {
-  type    = string
-  default = "shay79il@gmail.com"
+  type        = string
+  default     = "shay79il@gmail.com"
   description = "Subscription Email endpoint"
+}
+
+
+# Cloudwatch alarm module variables
+#####################################
+variable "alarm_name" {
+  type        = string
+  default     = "request_count_per_target_alarm"
+  description = "Alarm Name"
+}
+
+variable "comparison_operator" {
+  type        = string
+  default     = "GreaterThanThreshold"
+  description = "Comparison Operator"
+}
+
+variable "evaluation_periods" {
+  type        = number
+  default     = 1
+  description = "The number of periods over which data is compared to the specified threshold"
+}
+variable "metric_name" {
+  type        = string
+  default     = "RequestCountPerTarget"
+  description = "The name for the alarm's associated metric"
+}
+
+variable "namespace" {
+  type        = string
+  default     = "AWS/ApplicationELB"
+  description = "The namespace for the alarm's associated metric"
+}
+
+variable "period" {
+  type        = number
+  default     = 60
+  description = "The period in seconds over which the specified statistic is applied"
+}
+
+variable "statistic" {
+  type        = string
+  default     = "SampleCount"
+  description = "The statistic to apply to the alarm's associated metric"
+}
+
+variable "threshold" {
+  type        = number
+  default     = 0
+  description = "The value against which the specified statistic is compared"
+}
+
+variable "alarm_description" {
+  type        = string
+  default     = "Alarm triggered when ECS service receives requests from ALB"
+  description = "Alarm description"
 }
