@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  # install:
+  #     commands:
+  #         - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  #         - unzip awscliv2.zip
+  #         - sudo ./aws/install
+  pre_build:
+    commands:
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 428855609275.dkr.ecr.us-east-1.amazonaws.com/toluna-lab
+  build:
+    commands:
+      - echo "Build started on `date`"
+      - pwd
+      - cd  CICD/dockerImage
+      - docker image build -t 428855609275.dkr.ecr.us-east-1.amazonaws.com/toluna-lab:latest .
+  post_build:
+    commands:
+      - echo "Build completed on `date`"
+      - docker push 428855609275.dkr.ecr.us-east-1.amazonaws.com/toluna-lab:latest
