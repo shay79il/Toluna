@@ -88,7 +88,14 @@ module "ecs" {
 
 }
 
+module "sns" {
+  source = "../modules/sns"
+  topics = var.topics
+  protocol = var.protocol
+  endpoint = var.endpoint
 
+  depends_on = [module.ecs]
+}
 
 
 

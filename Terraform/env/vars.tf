@@ -318,3 +318,27 @@ variable "launch_type" {
   type        = string
   default     = "FARGATE"
 }
+
+
+# SNS module variables
+########################
+variable "topics" {
+  type = list(string)
+  default = [
+    "cw-alarm-topic"
+  ]
+  description = "List of SNS topics"
+}
+
+variable "protocol" {
+  type = string
+  default = "email"
+  description = "Subscription protocol"
+}
+
+
+variable "endpoint" {
+  type    = string
+  default = "shay79il@gmail.com"
+  description = "Subscription Email endpoint"
+}
