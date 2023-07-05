@@ -3,6 +3,10 @@ resource "aws_ecr_repository" "ecr" {
   image_tag_mutability = "MUTABLE"
   force_delete         = true
 
+  encryption_configuration {
+    encryption_type = "KMS"
+  }
+
 }
 resource "aws_vpc_endpoint" "ecr" {
 
