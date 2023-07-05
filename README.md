@@ -1,6 +1,39 @@
-# toluna assingment
+# Toluna assingment
+![Arch](Arch.jpeg)
 
-## The code include 5 modules
+## The exercise:
+> Create a free account in AWS
+
+> Deploy a web server that serves a "hello world" (you can take it from dockerhub for example) (use ECS or EKS, your choice)
+
+> Define a cloudwatch alert triggered when the container receives requests. It should send a message to your email when triggered.
+
+> Guidelines:
+Security is very important to us.
+Try to be mindful of cost.
+Use Terraform
+
+> Super important:
+> - The environment should be fully automated and be built and torn down with a script.
+> - Your repo should include some documentation 
+> - The exercise should work out of the box without code tweaks according to the instructions you provided
+
+## The code include 8 modules
+
+### IAM 
+
+- Policy
+- Role
+- Role Attachment
+- Inputs - `vars.tf`
+  - `effect`
+  - `actions`
+  - `principal_type`
+  - `principal_identifiers`
+  - `role_name`
+  - `policy_arn`
+- Outputs - `output.tf`
+  - `aws_iam_role_arn`
 
 ### VPC
 
@@ -80,3 +113,32 @@
   - `private_subnet_ids`
   - `security_group_ids`
   - `tg_ecs_fargate_arn`
+
+
+### SNS
+
+- Topic
+- Topic Subscription
+- Inputs - `vars.tf`
+  - `topics`  
+  - `protocol`
+  - `endpoint`
+- Outputs - `output.tf`
+  - `sns_topics_arns`
+
+
+### ALARM
+
+- Cloudwatch Alarm
+- Inputs - `vars.tf`
+  - `alarm_name`
+  - `comparison_operator`
+  - `evaluation_periods`
+  - `metric_name`
+  - `namespace`
+  - `period`
+  - `statistic`
+  - `threshold`
+  - `alarm_description`
+  - `alarm_actions`
+  - `dimension`
