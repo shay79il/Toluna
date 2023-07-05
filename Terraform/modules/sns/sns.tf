@@ -1,6 +1,6 @@
 resource "aws_sns_topic" "alarm" {
   for_each = toset(var.topics)
-  name = each.value
+  name     = each.value
 }
 
 resource "aws_sns_topic_subscription" "alarm" {

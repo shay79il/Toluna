@@ -1,15 +1,15 @@
 variable "topics" {
-  type = list(string)
+  type        = list(string)
   description = "List of SNS topics"
 }
 
 variable "protocol" {
-  type = string
+  type        = string
   description = "Subscription protocol"
 }
 
 
 variable "endpoint" {
-  type    = string
+  type        = string
   description = "Subscription Email endpoint"
 }
