@@ -5,13 +5,18 @@ locals {
 resource "aws_ecs_cluster" "this" {
   name = "toluna-ecs-cluster"
 
+  setting {
+    name  = "containerInsights"
+    value = "disabled"
+  }
+
   tags = {
     Name        = "ECS Cluster"
     Description = "ECS for ${var.env} environment"
   }
 }
 
-resource "aws_ecs_task_definition" "my_task_definition" {
+resource "aws_ecs_task_definition" "this" {
   family                   = "toluna-task"
   requires_compatibilities = ["FARGATE"]
   execution_role_arn       = var.execution_role_arn
@@ -38,10 +43,10 @@ resource "aws_ecs_task_definition" "my_task_definition" {
 }
 
 # Create ECS service
-resource "aws_ecs_service" "my_service" {
+resource "aws_ecs_service" "this" {
   name            = "ecs-servic"
   cluster         = aws_ecs_cluster.this.name
-  task_definition = aws_ecs_task_definition.my_task_definition.arn
+  task_definition = aws_ecs_task_definition.this.arn
   desired_count   = var.desired_count
   launch_type     = var.launch_type
 
