@@ -112,9 +112,9 @@ module "alarm" {
   threshold           = var.threshold
   alarm_description   = var.alarm_description
 
-  alarm_actions = module.sns.sns_topics_arns
+  alarm_actions       = module.sns.sns_topics_arns
 
-  dimension = module.alb.tg_ecs_fargate_arn_suffix
+  dimension           = module.alb.tg_ecs_fargate_arn_suffix
 
   depends_on = [module.sns]
 }
