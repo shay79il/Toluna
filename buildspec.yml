@@ -13,8 +13,8 @@ phases:
     commands:
       - echo "Build started on `date`"
       - pwd
-      - cd  CICD/dockerImage
-      - docker image build -t 428855609275.dkr.ecr.us-east-1.amazonaws.com/toluna-lab:latest .
+      - docker pull nginx
+      - docker tag nginx:latest 428855609275.dkr.ecr.us-east-1.amazonaws.com/toluna-lab:latest
   post_build:
     commands:
       - echo "Build completed on `date`"
