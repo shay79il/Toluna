@@ -8,10 +8,10 @@ phases:
   #         - sudo ./aws/install
   # pre_build:
   #   commands:
-      
+
   build:
     commands:
-      - echo "Build started on `date`"
+      - echo "Build started  on `date`"
       - pwd
       - docker pull nginx
       - docker tag nginx:latest 428855609275.dkr.ecr.us-east-1.amazonaws.com/toluna-lab:latest
