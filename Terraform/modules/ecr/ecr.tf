@@ -1,12 +1,14 @@
-resource "aws_ecr_repository" "ecr" {
-  name                 = "toluna-lab"
-  image_tag_mutability = "MUTABLE"
-  force_delete         = true
+# resource "aws_ecr_repository" "ecr" {
+#   name                 = "toluna-lab"
+#   image_tag_mutability = "MUTABLE"
+#   force_delete         = true
 
-  encryption_configuration {
-    encryption_type = "KMS"
-  }
-
+#   encryption_configuration {
+#     encryption_type = "KMS"
+#   }
+# }
+data "aws_ecr_repository" "ecr" {
+  name = "toluna-lab"
 }
 resource "aws_vpc_endpoint" "ecr" {
 
