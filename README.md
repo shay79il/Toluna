@@ -1,26 +1,36 @@
 # Toluna assingment
+
 ![Arch](Arch.jpeg)
 
-## The exercise:
-> Create a free account in AWS
+## Script to run
 
-> Deploy a web server that serves a "hello world" (you can take it from dockerhub for example) (use ECS or EKS, your choice)
+```bash
+terraform apply --auto-approve
+```
 
-> Define a cloudwatch alert triggered when the container receives requests. It should send a message to your email when triggered.
+## The exercise
 
-> Guidelines:
-Security is very important to us.
-Try to be mindful of cost.
-Use Terraform
-
-> Super important:
+> - Create a free account in AWS
+>
+> - Deploy a web server that serves a "hello world" (you can take it from DockerHub for example) (use ECS or EKS, your choice)
+>
+> - Define a cloudwatch alert triggered when the container receives requests. It should send a message to your email when triggered.
+>
+> __Guidelines__:
+>
+> - Security is very important to us.
+> - Try to be mindful of cost.
+> - Use Terraform
+>
+> __Super important__:
+>
 > - The environment should be fully automated and be built and torn down with a script.
-> - Your repo should include some documentation 
+> - Your repo should include some documentation
 > - The exercise should work out of the box without code tweaks according to the instructions you provided
 
 ## The code include 8 modules
 
-### IAM 
+### IAM
 
 - Policy
 - Role
@@ -114,7 +124,6 @@ Use Terraform
   - `security_group_ids`
   - `tg_ecs_fargate_arn`
 
-
 ### SNS
 
 - Topic
@@ -125,7 +134,6 @@ Use Terraform
   - `endpoint`
 - Outputs - `output.tf`
   - `sns_topics_arns`
-
 
 ### ALARM
 
